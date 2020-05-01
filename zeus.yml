@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  tasks:
+     - name: Add administration user
+       user:
+         name: zeus
+         password: '$6$OkDCuS9lTB8K$eZo8uCjdg6b0o2PSa/Agiae3hLeA4OvrXx90o./M3UUnp2f9wwfQLDLuaQBayjnXS8MJiOJk2zOErjcon9inK/'
+         #group: sudo
+         groups:
+          - sudo
+         state: present
+         shell: /bin/bash
+         createhome: yes
+         home: /home/zeus
+         uid: 1040

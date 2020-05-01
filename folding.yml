@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  tasks:
+     - name: Stop VPN client
+       command: /usr/bin/killall openvpn
+
+     - name: Stop Folding client
+       command: /etc/init.d/FAHClient stop
+
+     - name: Copy the default hosts file into place, backing up the original if it differs from the copied version
+       copy:
+         src: hosts.default
+         dest: /etc/hosts
+         owner: root
+         group: root
+         mode: '0644'
+         backup: yes
+

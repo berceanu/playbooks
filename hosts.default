@@ -1,0 +1,15 @@
+127.0.0.1       localhost.localdomain localhost
+192.168.0.1     heimdall.ra5.eli-np.ro heimdall
+192.168.0.100   thor.ra5.eli-np.ro thor
+192.168.0.101   jameson.ra5.eli-np.ro jameson
+192.168.0.200   epicur00.ra5.eli-np.ro epicur00
+192.168.0.201   epicur01.ra5.eli-np.ro epicur01
+192.168.0.202   epicur02.ra5.eli-np.ro epicur02
+192.168.0.203   epicur03.ra5.eli-np.ro epicur03
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

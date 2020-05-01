@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: true
+  tasks:
+     - name: Add hostname.jinka.in as ipa client
+       shell: hostname
+       register: client_hostname_value
+     
+     - set_fact:
+         client_hostname: "{{ client_hostname_value.stdout }}.ra5.eli-np.ro"
+
+     - name: change hostname
+       hostname:
+         name: "{{ client_hostname }}"
+
+         #     - debug:
+         #         msg: System {{ inventory_hostname }} has hostname {{ client_hostname }}
