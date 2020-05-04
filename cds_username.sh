@@ -84,7 +84,7 @@ create_user() {
 
     # Enter user's full name.
     read -p "Enter $USER_NAME's full name: " FULL_NAME 
-    useradd -c "$FULL_NAME" -m -d $STORAGE/$USER_NAME $USER_NAME
+    useradd -c "$FULL_NAME" -m -d $STORAGE/$USER_NAME -s /bin/bash $USER_NAME
     passwd $USER_NAME
 
     # User will be asked to change password on the first login.
@@ -131,7 +131,7 @@ read -p "Select [y/n]: " CHANGE_ACC_Y_N
     # We have to keep UserIDs/GroupIDs the same across the HPC, which is done below.
     sleep 2
     pdsh groupadd $USER_NAME -g $GROUPID
-    pdsh useradd -M $USER_NAME -u $USERID -g $USER_NAME -d $STORAGE/$USER_NAME
+    pdsh useradd -M $USER_NAME -u $USERID -g $USER_NAME -d $STORAGE/$USER_NAME -s /bin/bash 
 
     # Create user's scratch folder.
     pdsh "cd $SCRATCH; mkdir $USER_NAME; chown $USER_NAME:$USER_NAME $USER_NAME; chmod 700 $USER_NAME"
@@ -220,7 +220,7 @@ User/Group ID for: $USER_NAME
         # We have to keep UIDs the same across the HPC, which is done below.
         sleep 2
         pdsh groupadd $USER_NAME -g $GROUPID
-        pdsh useradd -M $USER_NAME -u $USERID -g $USER_NAME -d $STORAGE/$USER_NAME
+        pdsh useradd -M $USER_NAME -u $USERID -g $USER_NAME -d $STORAGE/$USER_NAME -s /bin/bash
 
         # Create user's scratch folder.
         pdsh "cd $SCRATCH; mkdir $USER_NAME; chown $USER_NAME:$USER_NAME $USER_NAME; chmod 700 $USER_NAME"
@@ -246,7 +246,7 @@ User/Group ID for: $USER_NAME
         # We have to keep UIDs the same across the HPC, which is done below.
         sleep 2
         pdsh -w $NODE_NAME groupadd $USER_NAME -g $GROUPID
-        pdsh -w $NODE_NAME useradd -M $USER_NAME -u $USERID -g $USER_NAME -d $STORAGE/$USER_NAME
+        pdsh -w $NODE_NAME useradd -M $USER_NAME -u $USERID -g $USER_NAME -d $STORAGE/$USER_NAME -s /bin/bash
 
         # Create user's scratch folder.
         pdsh -w $NODE_NAME "cd $SCRATCH; mkdir $USER_NAME; chown $USER_NAME:$USER_NAME $USER_NAME; chmod 700 $USER_NAME"
