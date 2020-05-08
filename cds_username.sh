@@ -64,7 +64,7 @@
 #
 
 STORAGE=/data/storage
-SCRATCH=/data/nvme
+SCRATCH=/scratch
 
 # Loading functions from: functions.sh
 source inc/functions.sh
