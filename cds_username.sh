@@ -88,7 +88,7 @@ create_user() {
     passwd $USER_NAME
 
     # User will be asked to change password on the first login.
-    chage -d 0 $USER_NAME
+    # chage -d 0 $USER_NAME
     
     # User ID & Group ID.
     USERID=$(id -u $USER_NAME)
